@@ -20,7 +20,9 @@ TEMPLATE_DIRS = [
 
 STATIC_PATH = os.path.join(BASE_DIR,'static')
 
-STATIC_URL = '/static/' 
+STATIC_URL = '/static/'
+
+LOGIN_URL = '/rango/login/'
 
 STATICFILES_DIRS = (
     STATIC_PATH,
@@ -63,6 +65,11 @@ INSTALLED_APPS = (
     'rango',
     'gabe',
     'about',
+)
+
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 )
 
 MIDDLEWARE_CLASSES = (
