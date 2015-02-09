@@ -15,19 +15,20 @@
                 {% endfor %}
             </ul>
        {% else %}
-            <strong>There are no categories present.</strong>
+            <strong>There are no categories present.</strong>	
        {% endif %}
-	   
+	   <a href="/rango/add_category/">Add a New Category</a><br />
 	   {% if pages %}
             <ul>
                 {% for page in pages %}
                 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-                {% endfor %}
+                {% endfor %}				
             </ul>
             {% else %}
-                <strong>No page present.</strong>
+                <strong>No page present.</strong>				
             {% endif %}
-	   
+			
+	   <a href="/rango/about/">About</a><br/>
 
     </body>
 </html>
