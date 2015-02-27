@@ -26,18 +26,19 @@
 						<ul class="nav pull-right">
 							{% if user.is_authenticated %}
 							<li class="navbar-text">Welcome, {{ user.username }}!</li>
-							<li><a href="/rango/logout/">Logout</a></li>
+							<li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
 							{% else %}
-							<li><a href="/rango/register/">Register Here</a></li>
-							<li><a href="/rango/login/">Login</a></li>
+							<li><a href="{% url 'registration_register' %}">Register Here</a></li>
+							<li><a href="{% url 'auth_login' %}">Login</a></li>
 							{% endif %}
 						</ul>
 						<ul class="nav">
 							{% if user.is_authenticated %}
-							<li><a href="/rango/restricted/">Restricted</a></li>
-							<li><a href="/rango/add_category/">Add Category</a></li>
+							<li><a href="{% url 'restricted' %}">Restricted</a></li>
+							<li><a href="{% url 'add_category' %}">Add Category</a></li>
 							{% endif %}
-							<li><a href="/rango/about/">About</a></li>
+							<li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
+							<li><a href="{% url 'about' %}">About</a></li>
 						<</ul>
 					</div>
 					<!--/.nav-collapse -->
