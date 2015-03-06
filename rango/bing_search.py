@@ -1,9 +1,8 @@
 import json
 import urllib, urllib2
+from keys import BING_API_KEY
 
-# Add your BING_API_KEY
-
-BING_API_KEY = '<insert_bing_api_key>'
+key = BING_API_KEY
 
 def run_query(search_terms):
     # Specify the base
@@ -37,7 +36,7 @@ def run_query(search_terms):
 
     # Create a 'password manager' which handles authentication for us.
     password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    password_mgr.add_password(None, search_url, username, BING_API_KEY)
+    password_mgr.add_password(None, search_url, username, key)
 
     # Create our results list which we'll populate.
     results = []
@@ -67,3 +66,18 @@ def run_query(search_terms):
 
     # Return the list of results to the calling function.
     return results
+
+def main():
+    query = raw_input("Please enter a query: ")
+    results = run_query(query)
+    rank = 1
+    
+    for result in results:
+        print "Rank {0}".format(rank)
+        print result['title']
+        print result['link']
+        print
+        rank += 1
+
+if __name__ == '__main__':
+    main()
