@@ -1,6 +1,10 @@
 import json
 import urllib, urllib2
 
+# Add your BING_API_KEY
+
+BING_API_KEY = '<insert_bing_api_key>'
+
 def run_query(search_terms):
     # Specify the base
     root_url = 'https://api.datamarket.azure.com/Bing/Search/'
@@ -29,11 +33,11 @@ def run_query(search_terms):
     # Setup authentication with the Bing servers.
     # The username MUST be a blank string, and put in your API key!
     username = ''
-    bing_api_key = '<api_key>'
+
 
     # Create a 'password manager' which handles authentication for us.
     password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    password_mgr.add_password(None, search_url, username, bing_api_key)
+    password_mgr.add_password(None, search_url, username, BING_API_KEY)
 
     # Create our results list which we'll populate.
     results = []
@@ -53,9 +57,9 @@ def run_query(search_terms):
         # Loop through each page returned, populating out results list.
         for result in json_response['d']['results']:
             results.append({
-                'title': result['Title'],
-                'link': result['Url'],
-                'summary': result['Description']})
+            'title': result['Title'],
+            'link': result['Url'],
+            'summary': result['Description']})
 
     # Catch a URLError exception - something went wrong when connecting!
     except urllib2.URLError, e:

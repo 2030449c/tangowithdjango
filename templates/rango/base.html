@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+{% load rango_extras %}
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -21,7 +22,7 @@
 						<span class="icon-bar"></span>
 					</button>
 				<a class="brand" href="/rango/">Rango</a>
-
+				
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							{% if user.is_authenticated %}
@@ -50,7 +51,9 @@
 			<div class="row-fluid">
 				<div class="span3">
 					<div class="well sidebar-nav">
-					<!--- Empty for the timebeing -->
+						{% block side_block %}
+						{% get_category_list category %}
+						{% endblock %}
 					</div>
 				<!--/.well -->
 				</div>
@@ -72,6 +75,7 @@
         <p>&copy; Rango: How to Tango with Django 2013</p>
     </div>
 </footer>
+
 
 	<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
