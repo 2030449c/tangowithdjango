@@ -1,0 +1,40 @@
+{% extends "rango/base.html" %}
+	{% load staticfiles %}
+	
+		{% block body_block %}
+		
+		{% if username %}
+			{% if profile %}
+			
+			<div class="page-header">
+				<h1>{{username.username}}'s profile</h1>
+				</div>
+				{% if profile.picture %}
+					<img alt = "User's photo" src = "{{profile.picture.url}}" height="270" width ="480"/>
+				{% endif %}				
+				<p>
+				{% if profile.website %}
+					<strong> Website: <a href="<{{profile.website}}">{{profile.website}}</a> <strong/>
+				{% endif %}
+				<br>				
+				<strong> E-mail: {{username.email}} <strong/>
+				</p>
+				
+			{% else %}
+				{% if user.username == username.username %}
+					<strong> You have not set up a profile! <strong/>
+				{% else %}
+					<strong> User has not set up a profile! <strong/>
+				{% endif %}
+			{% endif %}
+		
+			{% if user.username == username.username %}
+				<form action="/rango/add_profile" method="get">
+					<input type="submit" value="Edit"
+					name="Submit" id="frm1_submit" />
+				</form>
+			{% endif %}
+		{% else %}
+			<strong> User does not exist! <strong/>
+		{% endif %}
+		{% endblock %}

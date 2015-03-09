@@ -26,19 +26,22 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							{% if user.is_authenticated %}
-							<li class="navbar-text">Welcome, {{ user.username }}!</li>
-							<li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
+								<li class="navbar-text">Welcome, {{ user.username }}!</li>
+								<li><a href="{% url 'profile' user.username %}">Profile</a></li>
+								<li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
+								
 							{% else %}
-							<li><a href="{% url 'registration_register' %}">Register Here</a></li>
-							<li><a href="{% url 'auth_login' %}">Login</a></li>
-							<li><a href="{% url 'search' %}">Search</a></li>
+								<li><a href="{% url 'registration_register' %}">Register Here</a></li>
+								<li><a href="{% url 'auth_login' %}">Login</a></li>
 							{% endif %}
+							<li><a href="{% url 'search' %}">Search</a></li>
 						</ul>
 						<ul class="nav">
+						
 							{% if user.is_authenticated %}
-							<li><a href="{% url 'restricted' %}">Restricted</a></li>
-							<li><a href="{% url 'add_category' %}">Add Category</a></li>
-							<li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
+								<li><a href="{% url 'restricted' %}">Restricted</a></li>
+								<li><a href="{% url 'add_category' %}">Add Category</a></li>
+								<li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
 							{% endif %}							
 							<li><a href="{% url 'about' %}">About</a></li>
 						<</ul>
